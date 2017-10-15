@@ -34,8 +34,8 @@ public class Ports {
     public static final int DIPSWITCH_3 = 4;
     public static final int DIPSWITCH_4 = 3;
 
-    public static final int LEFT_GEAR_GOBBLER = 4;
-    public static final int RIGHT_GEAR_GOBBLER = 5;
+    public static final int LEFT_GEAR_GOBBLER = 3;
+    public static final int RIGHT_GEAR_GOBBLER = 4;
     public static final int PUSH_GEAR_GOBBLER = 19;
 
     private Ports() {

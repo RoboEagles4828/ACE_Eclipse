@@ -30,7 +30,7 @@ public class Hopper {
      */
     public void stir() {
         agitator1.set(AGITATOR_SPEED);
-        agitator2.set(-AGITATOR_SPEED);
+        agitator2.set(AGITATOR_SPEED);
 
     }
 
@@ -47,6 +47,12 @@ public class Hopper {
      */
     public void intake() {
         intakeMotor.set(INTAKE_SPEED);
+    }
+    /**
+     * Set Intake to a speed
+     */
+    public void intake(double speed) {
+        intakeMotor.set(speed);
     }
 
     /**

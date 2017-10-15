@@ -14,7 +14,7 @@ public class Robot extends IterativeRobot {
     private int autonSelect;
     private Climber climb;
     private Hopper hopper;
-    private GearGobbler gearGobbler;
+    //private GearGobbler gearGobbler;
     private Thread pixyThread;
     private Thread ultraThread;
     
@@ -52,9 +52,9 @@ public class Robot extends IterativeRobot {
         leftShooter.servos.calibrate(2, .35, .7);
 
         //GEAR GOBBLER
-        gearGobbler = new GearGobbler(Ports.LEFT_GEAR_GOBBLER, Ports.RIGHT_GEAR_GOBBLER);
-        gearGobbler.servo.calibrate(2, 1, .8);
-        gearGobbler.servo.calibrate(1, 0, .25);
+        //gearGobbler = new GearGobbler(Ports.LEFT_GEAR_GOBBLER, Ports.RIGHT_GEAR_GOBBLER);
+        //gearGobbler.servo.calibrate(2, 1, .8);
+        //gearGobbler.servo.calibrate(1, 0, .25);
 
         //AUTON SELECT
         dipSwitch = new DigitalInput[4];
@@ -73,8 +73,8 @@ public class Robot extends IterativeRobot {
         //ZERO SERVOS
         rightShooter.servos.set(0);
         leftShooter.servos.set(0);
-        gearGobbler.retract();
-        gearGobbler.close();
+        //gearGobbler.retract();
+        //gearGobbler.close();
     }
 
     @Override
@@ -85,8 +85,8 @@ public class Robot extends IterativeRobot {
             // Bit shift the switches repeatedly to read it into an int
             autonSelect += (dipSwitch[i].get() ? 1 : 0) * (1 << i);
         }
-        gearGobbler.retract();
-        gearGobbler.close();
+        //gearGobbler.retract();
+        //gearGobbler.close();
         System.out.println("Entering auton number " + autonSelect);
         drive.reset();
     }
@@ -113,17 +113,17 @@ public class Robot extends IterativeRobot {
             case 2:
                 // Place gear on left side
                 drive.moveDistance(distance, speed);
-                drive.placeGearAuton(0, pixy, ultrasonic, gearGobbler);
+                //drive.placeGearAuton(0, pixy, ultrasonic, gearGobbler);
                 break;
             case 3:
                 // Place gear on center
                 drive.moveDistance(distance / 3, speed);
-                drive.placeGearAuton(1, pixy, ultrasonic, gearGobbler);
+                //drive.placeGearAuton(1, pixy, ultrasonic, gearGobbler);
                 break;
             case 4:
                 // Place gear on right side
                 drive.moveDistance(distance, speed);
-                drive.placeGearAuton(2, pixy, ultrasonic, gearGobbler);
+                //drive.placeGearAuton(2, pixy, ultrasonic, gearGobbler);
                 break;
             case 5:
 
@@ -156,8 +156,12 @@ public class Robot extends IterativeRobot {
         //INTAKE
         if (driveStick.getRawButton(11) || secondaryStick.getRawButton(11)) {
             hopper.intake();
-        } else {
-            hopper.stopIntake();
+        }
+        if (driveStick.getRawButton(3) || secondaryStick.getRawButton(3)) {
+            hopper.intake(-1);
+        }
+        if(!(driveStick.getRawButton(11) || secondaryStick.getRawButton(11) || driveStick.getRawButton(3) || secondaryStick.getRawButton(3))) {
+        	hopper.stopIntake();
         }
 
         //GYRO and ENCODERS
@@ -180,13 +184,13 @@ public class Robot extends IterativeRobot {
 
         //GEAR PLACEMENT
         if (driveStick.getRawButton(12)) {
-            gearGobbler.open();
+            //gearGobbler.open();
             Timer.delay(.5);
-            gearGobbler.push();
+            //gearGobbler.push();
             Timer.delay(.4);
         } else {
-            gearGobbler.retract();
-            gearGobbler.close();
+            //gearGobbler.retract();
+            //gearGobbler.close();
         }
 
         if (driveStick.getRawButton(5)) {
@@ -195,10 +199,10 @@ public class Robot extends IterativeRobot {
 
         //SHOOTING
         if (driveStick.getRawButton(1) || secondaryStick.getRawButton(1)) {
-            rightShooter.spinUp((int) (magnitude * 30000));
-            leftShooter.spinUp((int) (magnitude * 30000));
-            //leftShooter.spinUpAbsolute(magnitude);
-            //rightShooter.spinUpAbsolute(magnitude*.9);
+            //rightShooter.spinUp((int) (magnitude * 30000));
+            //leftShooter.spinUp((int) (magnitude * 30000));
+            leftShooter.spinUpAbsolute(magnitude);
+            rightShooter.spinUpAbsolute(magnitude);
             hopper.stir();
             System.out.println(leftShooter + "     " + rightShooter);
         } else {
@@ -243,7 +247,7 @@ public class Robot extends IterativeRobot {
 
         if (driveStick.getRawButton(1)) {
             if (driveStick.getRawButton(12)) {
-                drive.placeGear(pixy, ultrasonic, gearGobbler);
+                //drive.placeGear(pixy, ultrasonic, gearGobbler);
             } else if (driveStick.getRawButton(7)) {
                 drive.mecanumDriveAbsolute(0, 0, drive.scaledRotation(270) * 1.1);
             } else if (driveStick.getRawButton(8)) {
