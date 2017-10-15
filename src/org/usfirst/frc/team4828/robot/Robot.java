@@ -15,17 +15,8 @@ public class Robot extends IterativeRobot {
     private Climber climb;
     private Hopper hopper;
     private GearGobbler gearGobbler;
-    //private Thread pixyThread;
+    private Thread pixyThread;
     private Thread ultraThread;
-    private CANTalon w1;
-    private CANTalon w2;
-    private CANTalon w3;
-    private CANTalon w4;
-    private CANTalon s5;
-    private CANTalon s6;
-    private Spark in;
-    private Spark ag5;
-    private Spark ag6;
     
 
     @Override
@@ -49,7 +40,7 @@ public class Robot extends IterativeRobot {
         climb = new Climber(Ports.CLIMBER_1, Ports.CLIMBER_2, Ports.HALLEFFECT_PORT);
 
         //HOPPER
-        hopper = new Hopper(Ports.AGITATOR, Ports.INTAKE);
+        hopper = new Hopper(Ports.AGITATOR_1, Ports.AGITATOR_2, Ports.INTAKE);
 
         //SHOOTERS
         // Master is the one on the right if you are looking at the back of the shooter
@@ -231,27 +222,15 @@ public class Robot extends IterativeRobot {
 
     @Override
     public void testInit() {
-        /*
     	super.testInit();
         System.out.println("Entering test...");
         pixyThread = new Thread(pixy, "Pixy Thread");
         pixyThread.start();
         drive.zeroEncoders();
-        */
-    	w1 = new CANTalon(1);
-    	w2 = new CANTalon(2);
-    	w3 = new CANTalon(3);
-    	w4 = new CANTalon(4);
-    	s5 = new CANTalon(5);
-    	s6 = new CANTalon(6);
-    	in = new Spark(4);
-    	ag5 = new Spark(5);
-    	ag6 = new Spark(6);
     }
 
     @Override
     public void testPeriodic() {
-        /*
     	double temp = ((-driveStick.getThrottle()) + 1) / 2;
         double offset = pixy.horizontalOffset();
 
@@ -288,52 +267,6 @@ public class Robot extends IterativeRobot {
             drive.zeroEncoders();
         }
 
-	*/
-    	if(driveStick.getRawButton(1)) {
-    		w1.set(1);
-    	} else {
-    		w1.set(0);
-    	}
-    	if(driveStick.getRawButton(2)) {
-    		w2.set(1);
-    	} else {
-    		w2.set(0);
-    	}
-    	if(driveStick.getRawButton(3)) {
-    		w3.set(1);
-    	} else {
-    		w3.set(0);
-    	}
-    	if(driveStick.getRawButton(4)) {
-    		w4.set(1);
-    	} else {
-    		w4.set(0);
-    	}
-    	if(driveStick.getRawButton(5)) {
-    		s5.set(1);
-    	} else {
-    		s5.set(0);
-    	}
-    	if(driveStick.getRawButton(6)) {
-    		s6.set(1);
-    	} else {
-    		s6.set(0);
-    	}
-    	if(driveStick.getRawButton(7)) {
-    		in.set(1);
-    	} else {
-    		in.set(0);
-    	}
-    	if(driveStick.getRawButton(8)) {
-    		ag5.set(1);
-    	} else {
-    		ag5.set(0);
-    	}
-    	if(driveStick.getRawButton(9)) {
-    		ag6.set(1);
-    	} else {
-    		ag6.set(0);
-    	}
         Timer.delay(.05);
     }
 

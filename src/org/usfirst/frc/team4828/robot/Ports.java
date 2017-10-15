@@ -5,7 +5,8 @@ public class Ports {
     public static final int INTAKE = 9;
     public static final int CLIMBER_1 = 8;
     public static final int CLIMBER_2 = 7;
-    public static final int AGITATOR = 6;
+    public static final int AGITATOR_1 = 5;
+    public static final int AGITATOR_2 = 6;
 
     // Drivetrain
     public static final int DT_FRONT_LEFT = 1;

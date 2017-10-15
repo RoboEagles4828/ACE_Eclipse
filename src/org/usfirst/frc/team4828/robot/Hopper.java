@@ -7,7 +7,9 @@ public class Hopper {
     private static final double AGITATOR_SPEED = 0.7;
     private static final double INTAKE_SPEED = 0.95;
 
-    private Spark agitator;
+    private Spark agitator1;
+    private Spark agitator2;
+
     private Spark intakeMotor;
 
     /**
@@ -16,8 +18,10 @@ public class Hopper {
      * @param agitatorPort port of the agitator motor
      * @param intakePort   port of the intake motor
      */
-    public Hopper(int agitatorPort, int intakePort) {
-        agitator = new Spark(agitatorPort);
+    public Hopper(int agitatorPort1, int agitatorPort2, int intakePort) {
+        agitator1 = new Spark(agitatorPort1);
+        agitator2 = new Spark(agitatorPort2);
+
         intakeMotor = new Spark(intakePort);
     }
 
@@ -25,14 +29,17 @@ public class Hopper {
      * Start stirring the hopper.
      */
     public void stir() {
-        agitator.set(AGITATOR_SPEED);
+        agitator1.set(AGITATOR_SPEED);
+        agitator2.set(-AGITATOR_SPEED);
+
     }
 
     /**
      * Stop stirring the hopper.
      */
     public void stopStir() {
-        agitator.set(0);
+        agitator1.set(0);
+        agitator2.set(0);
     }
 
     /**
