@@ -17,11 +17,11 @@ public class Ports {
     // Shooter
     public static final int SERVO_LEFT_MASTER = 3;
     public static final int SERVO_LEFT_SLAVE = 2;
-    public static final int SERVO_RIGHT_MASTER = 0;
+    public static final int SERVO_RIGHT_MASTER = 16;
     public static final int SERVO_RIGHT_SLAVE = 1;
     public static final int MOTOR_LEFT = 5;
     public static final int MOTOR_RIGHT = 6;
-    public static final int INDEXER_RIGHT = 10; // use port 0 on the navx as port 10
+    public static final int INDEXER_RIGHT = 12; // use port 0 on the navx as port 10
     public static final int INDEXER_LEFT = 11;  // use port 1 on the navx as port 11
 
     // Sensors
@@ -34,8 +34,8 @@ public class Ports {
     public static final int DIPSWITCH_3 = 4;
     public static final int DIPSWITCH_4 = 3;
 
-    public static final int LEFT_GEAR_GOBBLER = 3;
-    public static final int RIGHT_GEAR_GOBBLER = 4;
+    public static final int LEFT_GEAR_GOBBLER = 18;
+    public static final int RIGHT_GEAR_GOBBLER = 17;
     public static final int PUSH_GEAR_GOBBLER = 19;
 
     private Ports() {

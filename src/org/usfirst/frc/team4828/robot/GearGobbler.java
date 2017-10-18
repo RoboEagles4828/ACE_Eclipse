@@ -11,8 +11,7 @@ public class GearGobbler {
         pusher = new Servo(Ports.PUSH_GEAR_GOBBLER);
     }
 
-    public void debug(double pos){
-        pusher.set(pos);
+    public void debug(){
         System.out.println(pusher.get());
     }
 
@@ -21,14 +20,14 @@ public class GearGobbler {
     }
 
     public void retract(){
-        pusher.set(.45);
+        pusher.set(.50);
     }
 
     public void open() {
-        servo.set(0);
+        servo.set(1);
     }
 
     public void close() {
-        servo.set(1);
+        servo.set(0);
     }
 }
