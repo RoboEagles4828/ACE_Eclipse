@@ -230,8 +230,8 @@ public class Robot extends IterativeRobot {
     public void testInit() {
     	super.testInit();
         System.out.println("Entering test...");
-        pixyThread = new Thread(pixy, "Pixy Thread");
-        pixyThread.start();
+        // pixyThread = new Thread(pixy, "Pixy Thread");
+        // pixyThread.start();
         drive.zeroEncoders();
     }
 
